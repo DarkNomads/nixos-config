@@ -1,14 +1,25 @@
-{ pkgs, ... }: let
+{ pkgs, neovim-nixpkgs, ... }: let
   homeDirectory = "/home/darknomads";
 in {
 
   home.username = "darknomads";
   home.homeDirectory = "${homeDirectory}";
 
-  home.packages = with pkgs; [
-    neovim
+  home.packages = (with pkgs; [
+    brave
+    bitwarden-desktop
+    vintagestory
     bash
-  ];
+    ripgrep
+    gcc
+    lua-language-server
+    typescript-language-server
+    tailwindcss-language-server
+    svelte-language-server
+    # ruby-lsp
+  ]) ++ (with neovim-nixpkgs.legacyPackages.${pkgs.system}; [
+    neovim
+  ]);
 
   programs.alacritty = {
     enable = true;
