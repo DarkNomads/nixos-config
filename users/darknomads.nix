@@ -9,7 +9,6 @@ in {
     brave
     bitwarden-desktop
     vintagestory
-    bash
     ripgrep
     gcc
     lua-language-server
@@ -20,6 +19,15 @@ in {
   ]) ++ (with neovim-nixpkgs.legacyPackages.${pkgs.system}; [
     neovim
   ]);
+
+  programs.bash = {
+    enable = true;
+    bashrcExtra = ''
+      PS1='\n\[\033[1;32m\][\[\033]0;\u@\h: \w\007\]\u@\h:\w]\$'
+      PS1+='$([ -n "$IN_NIX_SHELL" ] && echo "\[\033[34m\] (dev-shell)\[\033[0m\]")'
+      PS1+='\[\033[0m\] '
+    '';
+  };
 
   programs.alacritty = {
     enable = true;
