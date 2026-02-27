@@ -47,13 +47,11 @@
   };
 
   environment.systemPackages = with pkgs; [
-    wofi
     neovim
     git
     steam
   ];
 
-  programs.sway.enable = true;
   programs.ssh.startAgent = true;
 
   services.printing.enable = true;

@@ -1,4 +1,4 @@
-{ pkgs, neovim-nixpkgs, ... }: let
+{ config, pkgs, neovim-nixpkgs, ... }: let
   homeDirectory = "/home/darknomads";
 in {
 
@@ -6,6 +6,8 @@ in {
   home.homeDirectory = "${homeDirectory}";
 
   home.packages = (with pkgs; [
+    dejavu_fonts
+    waybar
     brave
     bitwarden-desktop
     vintagestory
@@ -31,7 +33,12 @@ in {
 
   programs.alacritty = {
     enable = true;
-    settings.font.size = 20;
+    settings.font = {
+      size = 20;
+      normal = { family = "DejaVu Sans Mono"; style = "Regular"; };
+      bold = { family = "DejaVu Sans Mono"; style = "Bold"; };
+      italic = { family = "DejaVu Sans Mono"; style = "Italic"; };
+    };
   };
 
   programs.tmux = {
@@ -80,5 +87,52 @@ in {
 
   programs.home-manager.enable = true;
 
+  wayland.windowManager.sway = {
+    enable = true;
+    checkConfig = false;
+    config = {
+      menu = "wofi --show drun --prompt 'search'";
+      modifier = "Mod4";
+      output."*".bg = "${homeDirectory}/Pictures/wallpaper-dark.jpg fill";
+      terminal = "alacritty";
+      bars = [
+        {
+          command = "${pkgs.waybar}/bin/waybar";
+          position = "top";
+        }
+      ];
+    };
+  };
+
+  programs.wofi = {
+    enable = true;
+    settings = {
+      width = 750;
+      height = 400;
+    };
+    style = ''
+      window {
+        background-color: #282a36;
+        font-size: 20px;
+        font-family: "DejaVu Sans Mono";
+        opacity: 0.85;
+      }
+
+      #input, #inner-box, #outer-box {
+        background-color: #44475a;
+        color: #f8f8f2;
+        caret-color: #f8f8f2;
+        border: none;
+      }
+
+      #input:focus {
+        outline: none;
+        border: none;
+        box-shadow: none;
+      }
+    '';
+  };
+
   home.stateVersion = "25.11";
+  home.enableNixpkgsReleaseCheck = false;
 }
