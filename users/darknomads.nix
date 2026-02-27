@@ -24,6 +24,10 @@ in {
   programs.bash = {
     enable = true;
     bashrcExtra = ''
+      if [ -z "$WAYLAND_DISPLAY"] && [ "$(tty)" = "/dev/tty1" ]; then
+        exec sway
+      fi
+
       PS1='\n\[\033[1;32m\][\[\033]0;\u@\h: \w\007\]\u@\h:\w]\$'
       PS1+='$([ -n "$IN_NIX_SHELL" ] && echo "\[\033[34m\] (dev-shell)\[\033[0m\]")'
       PS1+='\[\033[0m\] '
@@ -90,6 +94,7 @@ in {
     enable = true;
     checkConfig = false;
     config = {
+      defaultWorkspace = "workspace number 1";
       menu = "wofi --show drun --prompt 'search'";
       modifier = "Mod4";
       output."*".bg = "${homeDirectory}/Pictures/wallpaper-dark.jpg fill";
