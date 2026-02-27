@@ -24,7 +24,7 @@ in {
   programs.bash = {
     enable = true;
     bashrcExtra = ''
-      if [ -z "$WAYLAND_DISPLAY"] && [ "$(tty)" = "/dev/tty1" ]; then
+      if [ -z "$WAYLAND_DISPLAY" ] && [ "$(tty)" = "/dev/tty1" ]; then
         exec sway
       fi
 
@@ -170,6 +170,11 @@ in {
 
       #workspaces button.focused {
         padding: 0 10px;
+        color: #ffffff;
+      }
+
+      #workspaces button:hover {
+        background: none;
         color: #ffffff;
       }
     '';
