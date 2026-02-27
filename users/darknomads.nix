@@ -7,7 +7,6 @@ in {
 
   home.packages = (with pkgs; [
     dejavu_fonts
-    waybar
     brave
     bitwarden-desktop
     vintagestory
@@ -61,8 +60,8 @@ in {
     enable = true;
     settings = {
       user = {
-	email = "ghostnomadjr@gmail.com";
-	name = "DarkNomads";
+        email = "ghostnomadjr@gmail.com";
+        name = "DarkNomads";
       };
       gpg.format = "ssh";
     };
@@ -95,12 +94,7 @@ in {
       modifier = "Mod4";
       output."*".bg = "${homeDirectory}/Pictures/wallpaper-dark.jpg fill";
       terminal = "alacritty";
-      bars = [
-        {
-          command = "${pkgs.waybar}/bin/waybar";
-          position = "top";
-        }
-      ];
+      bars = [ { command = "${pkgs.waybar}/bin/waybar"; } ];
     };
   };
 
@@ -129,6 +123,49 @@ in {
         outline: none;
         border: none;
         box-shadow: none;
+      }
+    '';
+  };
+
+  programs.waybar = {
+    enable = true;
+    settings = {
+      mainBar = {
+        layer = "top";
+        position = "top";
+        height = 30;
+        modules-left = [ "sway/workspaces" ];
+        modules-right = [ "battery" "clock" ];
+        battery = { format = "{capacity}%"; };
+        clock = { format = "{:%H:%M:%S}"; interval = 1; };
+      };
+    };
+    style = ''
+      * {
+        border: none;
+        border-radius: 0;
+        font-family: 'DejaVu Sans Mono';
+        font-size: 14px;
+      }
+
+      #waybar {
+        background-color: rgba(20, 20, 25, 0.2);
+        color: #ffffff;
+      }
+
+      #clock, #battery {
+        padding: 0 10px;
+        margin: 0 4px;
+      }
+
+      #workspaces button {
+        padding: 0 10px;
+        color: #808080;
+      }
+
+      #workspaces button.focused {
+        padding: 0 10px;
+        color: #ffffff;
       }
     '';
   };
