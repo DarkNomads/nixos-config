@@ -95,7 +95,7 @@ in {
     checkConfig = false;
     config = {
       defaultWorkspace = "workspace number 1";
-      menu = "wofi --show drun --prompt 'search'";
+      menu = "wofi --show drun --insensitive --prompt 'search'";
       modifier = "Mod4";
       output."*".bg = "${homeDirectory}/Pictures/wallpaper-dark.jpg fill";
       terminal = "alacritty";
@@ -179,6 +179,14 @@ in {
       }
     '';
   };
+
+  home.file.".local/share/applications/steam.desktop".text = ''
+    [Desktop Entry]
+    Name=Steam
+    Exec=env WAYLAND_DISPLAY=$WAYLAND_DISPLAY SWAYSOCK=$SWAYSOCK XDG_SESSION_TYPE=$XDG_SESSION_TYPE steam
+    Terminal=false
+    Type=Application
+  '';
 
   home.stateVersion = "25.11";
   home.enableNixpkgsReleaseCheck = false;
