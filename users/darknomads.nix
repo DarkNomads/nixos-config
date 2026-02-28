@@ -7,6 +7,8 @@ in {
 
   home.packages = (with pkgs; [
     dejavu_fonts
+    nerd-fonts.fira-code
+    pavucontrol
     brave
     bitwarden-desktop
     vintagestory
@@ -17,7 +19,7 @@ in {
     tailwindcss-language-server
     svelte-language-server
     # ruby-lsp
-  ]) ++ (with neovim-nixpkgs.legacyPackages.${pkgs.system}; [
+  ]) ++ (with neovim-nixpkgs.legacyPackages.${pkgs.stdenv.hostPlatform.system}; [
     neovim
   ]);
 
@@ -140,9 +142,10 @@ in {
         position = "top";
         height = 30;
         modules-left = [ "sway/workspaces" ];
-        modules-right = [ "battery" "clock" ];
-        battery = { format = "{capacity}%"; };
-        clock = { format = "{:%H:%M:%S}"; interval = 1; };
+        modules-right = [ "pulseaudio" "battery" "clock" ];
+        pulseaudio = { format = "  {volume}%"; format-muted = "󰖁"; on-click = "pavucontrol"; };
+        battery = { format = " {capacity}%"; };
+        clock = { format = "{:%H:%M:%S}"; interval = 1; tooltip = false; };
       };
     };
     style = ''
@@ -158,7 +161,7 @@ in {
         color: #ffffff;
       }
 
-      #clock, #battery {
+      #clock, #battery, #pulseaudio {
         padding: 0 10px;
         margin: 0 4px;
       }
