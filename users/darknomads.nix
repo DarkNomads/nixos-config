@@ -12,7 +12,10 @@
     brave
     protonvpn-gui
     bitwarden-desktop
-    vintagestory
+    discord
     ytmdesktop
+    vintagestory
+    reaper
+    qmk
   ];
 }
