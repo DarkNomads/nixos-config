@@ -83,10 +83,11 @@
         position = "top";
         height = 30;
         modules-left = [ "sway/workspaces" ];
-        modules-right = [ "pulseaudio" "battery" "clock" ];
+        modules-right = [ "tray" "pulseaudio" "battery" "clock" ];
         pulseaudio = { format = "  {volume}%"; format-muted = "󰖁"; on-click = "pavucontrol"; };
         battery = { format = " {capacity}%"; };
         clock = { format = "{:%H:%M:%S}"; interval = 1; tooltip = false; };
+        tray = { icon-size = 16; spacing = 8; };
       };
     };
     style = ''
@@ -105,6 +106,10 @@
       #clock, #battery, #pulseaudio {
         padding: 0 10px;
         margin: 0 4px;
+      }
+
+      #tray {
+        margin: 10px;
       }
 
       #workspaces button {
