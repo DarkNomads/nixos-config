@@ -19,17 +19,21 @@
   in {
     nixosConfigurations = {
       inherit system;
-      nixos = nixpkgs.lib.nixosSystem {
-      	inherit pkgs;
-        modules = [ ./nixos/configuration.nix ];
+      desktop = nixpkgs.lib.nixosSystem {
+        inherit pkgs;
+        modules = [ ./machines/desktop/configuration.nix ];
+      };
+      laptop = nixpkgs.lib.nixosSystem {
+        inherit pkgs;
+        modules = [ ./machines/laptop/configuration.nix ];
       };
     };
 
     homeConfigurations = {
       darknomads = home-manager.lib.homeManagerConfiguration {
-      	inherit pkgs;
-	extraSpecialArgs = { inherit neovim-nixpkgs; };
-      	modules = [ ./users/darknomads.nix ];
+        inherit pkgs;
+        extraSpecialArgs = { inherit neovim-nixpkgs; };
+        modules = [ ./users/darknomads.nix ];
       };
     };
   };

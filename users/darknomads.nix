@@ -6,6 +6,7 @@ in {
   home.homeDirectory = "${homeDirectory}";
 
   home.packages = (with pkgs; [
+    wl-clipboard
     dejavu_fonts
     nerd-fonts.fira-code
     pavucontrol
@@ -27,7 +28,7 @@ in {
     enable = true;
     bashrcExtra = ''
       if [ -z "$WAYLAND_DISPLAY" ] && [ "$(tty)" = "/dev/tty1" ]; then
-        exec sway
+        exec sway --unsupported-gpu
       fi
 
       PS1='\n\[\033[1;32m\][\[\033]0;\u@\h: \w\007\]\u@\h:\w]\$'
@@ -99,10 +100,33 @@ in {
       defaultWorkspace = "workspace number 1";
       menu = "wofi --show drun --insensitive --prompt 'search'";
       modifier = "Mod4";
-      output."*".bg = "${homeDirectory}/Pictures/wallpaper-dark.jpg fill";
+      output = {
+        "*".bg = "${homeDirectory}/Pictures/wallpaper-dark.jpg fill";
+        "DP-1" = {
+          mode = "2560x1440@144Hz";
+          pos = "2560 0";
+          scale = "1";
+        };
+        "DP-2" = {
+          mode = "2560x1440@144Hz";
+          pos = "0 0";
+          scale = "1";
+        };
+      };
+      workspaceOutputAssign = [
+        { workspace = "1"; output = "DP-1"; }
+        { workspace = "2"; output = "DP-2"; }
+      ];
       terminal = "alacritty";
       bars = [ { command = "${pkgs.waybar}/bin/waybar"; } ];
     };
+    extraConfig = ''
+      exec_always swaymsg focus output DP-1
+      input type:pointer {
+        accel_profile flat
+        pointer_accel 0.7
+      }
+    '';
   };
 
   programs.wofi = {
