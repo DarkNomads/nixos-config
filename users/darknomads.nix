@@ -16,7 +16,6 @@
     ytmdesktop
     vintagestory
     reaper
-    qmk
   ];
 
   systemd.user.services.protonvpn-gui = {

@@ -32,6 +32,7 @@
   programs.ssh.startAgent = true;
   virtualisation.docker.enable = true;
 
+  services.avahi = { enable = true; nssmdns4 = true; };
   services.printing.enable = true;
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
