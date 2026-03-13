@@ -49,6 +49,7 @@
   programs.wofi = {
     enable = true;
     settings = {
+      layer = "overlay";
       width = 750;
       height = 400;
     };
