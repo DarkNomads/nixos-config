@@ -3,9 +3,9 @@
 {
 
   imports = [
-    ./common.nix
-    ./modules/wayland.nix
+    ./modules/common.nix
     ./modules/neovim.nix
+    ./modules/wayland.nix
   ];
 
   home.packages = with pkgs; [
