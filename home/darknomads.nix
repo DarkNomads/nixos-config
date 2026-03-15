@@ -16,6 +16,7 @@
     ytmdesktop
     vintagestory
     reaper
+    obs-studio
   ];
 
   systemd.user.services.protonvpn-gui = {

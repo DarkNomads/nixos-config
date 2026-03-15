@@ -29,13 +29,13 @@
     neovim
     git
     steam
+    tailscale
   ];
 
   programs.ssh.startAgent = true;
   virtualisation.docker.enable = true;
   services.avahi = { enable = true; nssmdns4 = true; };
   services.printing.enable = true;
-  services.tailscale.enable = true;
   security.rtkit.enable = true;
 
   services.pulseaudio.enable = false;
@@ -44,5 +44,11 @@
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
+  };
+
+  xdg.portal = {
+    enable = true;
+    wlr.enable = true;
+    config.common.default = [ "wlr" ];
   };
 }
