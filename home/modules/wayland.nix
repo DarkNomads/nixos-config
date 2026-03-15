@@ -7,6 +7,8 @@
     wofi
     pavucontrol
     wl-clipboard
+    grim
+    slurp
     nerd-fonts.fira-code
   ];
 

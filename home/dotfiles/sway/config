@@ -70,6 +70,7 @@ bindsym Mod4+s layout stacking
 bindsym Mod4+space focus mode_toggle
 bindsym Mod4+v splitv
 bindsym Mod4+w layout tabbed
+bindsym Mod4+Shift+s exec grim -g "$(slurp)" - | wl-copy
 
 mode "resize" {
   bindsym Down resize grow height 10 px

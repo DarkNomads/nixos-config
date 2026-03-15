@@ -33,11 +33,12 @@
 
   programs.ssh.startAgent = true;
   virtualisation.docker.enable = true;
-
   services.avahi = { enable = true; nssmdns4 = true; };
   services.printing.enable = true;
-  services.pulseaudio.enable = false;
+  services.tailscale.enable = true;
   security.rtkit.enable = true;
+
+  services.pulseaudio.enable = false;
   services.pipewire = {
     enable = true;
     alsa.enable = true;
