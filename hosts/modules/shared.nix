@@ -51,4 +51,10 @@
     wlr.enable = true;
     config.common.default = [ "wlr" ];
   };
+
+  networking.firewall = {
+    enable = true;
+    allowedTCPPorts = [ 42420 ];
+    allowedUDPPorts = [ 42420 ];
+  };
 }
