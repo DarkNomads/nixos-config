@@ -12,7 +12,10 @@
     alacritty
     tmux
     dejavu_fonts
+    noto-fonts-color-emoji
   ];
+
+  fonts.fontconfig.enable = true;
 
   programs.bash = {
     enable = true;
