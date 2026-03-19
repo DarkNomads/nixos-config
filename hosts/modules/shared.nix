@@ -24,6 +24,7 @@
   };
 
   hardware.keyboard.qmk.enable = true;
+  hardware.bluetooth.enable = true;
 
   environment.systemPackages = with pkgs; [
     neovim

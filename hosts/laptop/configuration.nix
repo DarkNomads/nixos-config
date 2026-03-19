@@ -9,9 +9,8 @@
   networking.hostName = "laptop";
 
   users.users.darknomads.openssh.authorizedKeys.keys = [
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIB665NLTNeaRtTsfiZkonkdmvI8Mghawh/ZORf/GWr9z darknomads@desktop"
-    ];
-  };
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIB665NLTNeaRtTsfiZkonkdmvI8Mghawh/ZORf/GWr9z darknomads@desktop"
+  ];
 
   hardware.nvidia = {
     modesetting.enable = true;
