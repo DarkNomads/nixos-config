@@ -1,0 +1,12 @@
+require("config.options")
+require("config.keymaps")
+
+require("plugins.colorscheme")
+require("plugins.oil")
+require("plugins.telescope")
+require("plugins.harpoon")
+require("plugins.git")
+require("plugins.marks")
+require("plugins.completion")
+require("plugins.lsp")
+require("plugins.treesitter")

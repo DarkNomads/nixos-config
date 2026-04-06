@@ -10,25 +10,26 @@
 
   home.packages = with pkgs; [
     brave
-    protonvpn-gui
+    proton-vpn
     bitwarden-desktop
     discord
     ytmdesktop
     vintagestory
     reaper
     obs-studio
+    libreoffice-still
   ];
 
-  systemd.user.services.protonvpn-gui = {
+  systemd.user.services.proton-vpn = {
     Unit = {
-      Description = "ProtonVPN GUI";
+      Description = "ProtonVPN";
       After = [ "network-online.target" "graphical-session.target" ];
       Wants = [ "network-online.target" ];
     };
 
     Service = {
       Type = "exec";
-      ExecStart = "${pkgs.protonvpn-gui}/bin/protonvpn-app --start-minimized";
+      ExecStart = "${pkgs.proton-vpn}/bin/protonvpn-app --start-minimized";
       Restart = "always";
       RestartSec = 5;
     };
