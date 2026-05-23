@@ -5,6 +5,7 @@ vim.pack.add({{
 
 require("nvim-treesitter").install({
   "nix",
+  "gleam",
   "c",
   "typescript",
   "ruby",
@@ -14,6 +15,7 @@ require("nvim-treesitter").install({
 
 local highlight_fn = function() vim.treesitter.start() end
 vim.api.nvim_create_autocmd("FileType", { pattern = { "nix" }, callback = highlight_fn })
+vim.api.nvim_create_autocmd("FileType", { pattern = { "gleam" }, callback = highlight_fn })
 vim.api.nvim_create_autocmd("FileType", { pattern = { "c" }, callback = highlight_fn })
 vim.api.nvim_create_autocmd("FileType", { pattern = { "typescript" }, callback = highlight_fn })
 vim.api.nvim_create_autocmd("FileType", { pattern = { "html" }, callback = highlight_fn })
