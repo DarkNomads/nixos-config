@@ -12,7 +12,7 @@
     brave
     proton-vpn
     bitwarden-desktop
-    discord
+    vesktop
     ytmdesktop
     vintagestory
     reaper
