@@ -48,10 +48,12 @@
   programs.ssh = {
     enable = true;
     enableDefaultConfig = false;
-    matchBlocks."*" = {
-      addKeysToAgent = "1h";
-      identityFile = "${config.home.homeDirectory}/.ssh/id_ed25519";
-      identitiesOnly = true;
+    settings = {
+      "Host *" = {
+        AddKeysToAgent = "1h";
+        IdentityFile = "${config.home.homeDirectory}/.ssh/id_ed25519";
+        IdentitiesOnly = true;
+      };
     };
   };
 
