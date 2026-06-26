@@ -31,6 +31,7 @@
     git
     steam
     tailscale
+    slurp
   ];
 
   programs.ssh.startAgent = true;
@@ -50,8 +51,18 @@
 
   xdg.portal = {
     enable = true;
-    wlr.enable = true;
-    config.common.default = [ "wlr" ];
+    wlr = {
+      enable = true;
+      settings.screencast = {
+        chooser_type = "simple";
+        chooser_cmd = "${pkgs.slurp}/bin/slurp -f 'Monitor: %o' -or";
+      };
+    };
+    config.common = {
+      default = [ "wlr" ];
+      "org.freedesktop.impl.portal.ScreenCast" = [ "wlr" ];
+      "org.freedesktop.impl.portal.Screenshot" = [ "wlr" ];
+    };
   };
 
   networking.firewall = {
