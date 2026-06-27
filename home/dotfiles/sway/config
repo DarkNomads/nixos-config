@@ -1,4 +1,4 @@
-font pango:DejaVu Sans Mono 10
+font pango:Noto Sans Mono 10
 floating_modifier Mod4
 default_border normal 2
 default_floating_border normal 2
@@ -86,7 +86,7 @@ mode "resize" {
 }
 
 bar {
-  font pango:DejaVu Sans Mono 10
+  font pango:Noto Sans Mono 10
   swaybar_command waybar
 }
 

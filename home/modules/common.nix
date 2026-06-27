@@ -11,11 +11,19 @@
   home.packages = with pkgs; [
     alacritty
     tmux
-    dejavu_fonts
+    noto-fonts
     noto-fonts-color-emoji
   ];
 
-  fonts.fontconfig.enable = true;
+  fonts.fontconfig = {
+    enable = true;
+    defaultFonts = {
+      sansSerif = [ "Noto Sans" ];
+      serif = [ "Noto Serif" ];
+      monospace = [ "Noto Sans Mono" ];
+      emoji = [ "Noto Color Emoji" ];
+    };
+  };
 
   programs.bash = {
     enable = true;
