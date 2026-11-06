@@ -2,7 +2,7 @@
 
 {
   system.stateVersion = "25.11";
-  nix.settings.experimental-features = "nix-command flakes";
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -63,11 +63,5 @@
       "org.freedesktop.impl.portal.ScreenCast" = [ "wlr" ];
       "org.freedesktop.impl.portal.Screenshot" = [ "wlr" ];
     };
-  };
-
-  networking.firewall = {
-    enable = true;
-    allowedTCPPorts = [ 42420 ];
-    allowedUDPPorts = [ 42420 ];
   };
 }

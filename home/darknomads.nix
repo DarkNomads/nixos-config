@@ -17,7 +17,7 @@
     vintagestory
     reaper
     obs-studio
-    libreoffice-still
+    libreoffice
   ];
 
   systemd.user.services.proton-vpn = {
